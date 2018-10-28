@@ -48,8 +48,8 @@ if(xz_LIBRARY_DIRS)
 endif()
 
 ExternalProject_Add(mksquashfs
-    GIT_REPOSITORY https://github.com/plougher/squashfs-tools/
-    GIT_TAG 5be5d61
+    GIT_REPOSITORY https://github.com/patrickdepinguin/squashfs-tools/
+    GIT_TAG 968aa53dd6d2c0831a9af01873441767c06b88d0
     UPDATE_COMMAND ""  # ${MAKE} sure CMake won't try to fetch updates unnecessarily and hence rebuild the dependency every time
     PATCH_COMMAND patch -N -p1 < ${PROJECT_SOURCE_DIR}/src/mksquashfs-mkfs-fixed-timestamp.patch || true
     CONFIGURE_COMMAND ${SED} -i "s|CFLAGS += -DXZ_SUPPORT|CFLAGS += ${mksquashfs_cflags}|g" <SOURCE_DIR>/squashfs-tools/Makefile
